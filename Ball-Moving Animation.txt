@@ -1,0 +1,733 @@
+# We made the sky using app.background
+app.background = gradient ('dodgerBlue', 'paleTurquoise', start='top')
+
+#Create app to change the scene:
+app.light = True
+app.dark = False
+app.moveMoon = False
+app.space = False
+app.ocean = False
+app.underwater = False
+app.sunrise = False
+app.up = False
+
+#Create app to explode the firework:
+app.fireWork = False
+
+#Show the instrution to how to run the code:
+right = Label('Press "right" key to run',200,80,font = 'caveat',size = 30)
+        
+# We are making the land
+land = Rect (0, 320, 400, 80, fill=gradient ('sienna', 'saddleBrown'))
+grass = Line (0, 320, 400, 320, fill='green', lineWidth = 10)
+
+#We are making the rail
+rail = Group(
+        Line (0, 80, 40, 80, fill='maroon'),
+        Line (40, 80, 160, 320, fill='maroon'),
+        Line (160, 320, 400, 320, fill='maroon'),
+        )
+rail2 = Line(0,320,400,320,fill='marron',visible = False)
+rail3 = Group(
+        Line(0,320,80,320,fill ='maroon'),
+        Line(80,320,360,40,fill ='maroon'),
+        Line(360,40,400,40,fill='maroon'),
+        )
+rail3.visible = False
+rail4 = Line (0, 40, 40, 40, fill='maroon')
+rail4.visible = False
+    
+#We are making the moutain when the cart.left > 400:
+mountain = Group(
+        Polygon(140, 400, 220, 310, 245, 330, 270, 290, 290, 300, 330, 245, 465, 400,fill=rgb(13, 34, 39)),
+        Polygon(0, 400, 60, 310, 100, 365, 135, 345, 190, 400, fill=rgb(15, 24, 35))
+        )
+mountain2 = Polygon(0,320,80,320,360,40,400,40,400,400,0,400, fill = gradient(rgb(165, 115, 180), rgb(235, 160, 130),rgb(225, 190, 165), start='top'))
+mountain.visible = False
+mountain2.visible = False
+
+#We are making the fire rings around the cart
+meteor = Star (0, 30, 20, 400, fill=gradient ('orange', 'yellow', 'red', 'black'))
+meteor.visible = False
+meteorTrail = Line (0, 0, 0, 0, fill=gradient('purple', 'yellow', 'orange', 'red', start='left'),lineWidth = 5, visible= False)
+meteorTrail.toBack()
+
+#We are making the balloon
+balloon = Group (
+            Oval (60, 220, 40, 70, fill='red'),
+            Label ('T', 60, 220, fill='white', font = 'caveat', size = 35),
+            Oval (100, 200, 40, 70, fill='red'),
+            Label ('H', 100, 200, fill='white', font = 'caveat', size = 35),
+            Oval (140, 180, 40, 70, fill='red'),
+            Label ('A', 140, 180, fill = 'white', font = 'caveat', size = 35),
+            Oval (180, 160, 40, 70, fill='red'),
+            Label ('N', 180, 160, fill='white', font = 'caveat', size = 35),
+            Oval (220, 140, 40, 70, fill='red'),
+            Label ('K', 220, 140, fill='white', font = 'caveat', size = 35),
+            Oval (260, 120, 40, 70, fill='red'),
+            Label ('Y', 260, 120, fill='white', font = 'caveat', size = 35),
+            Oval (300, 100, 40, 70, fill = 'red'),
+            Label ('O', 300, 100, fill='white', font = 'caveat', size = 35),
+            Oval (340, 80, 40 ,70, fill='red'),
+            Label ('U', 340, 80, fill='white', font = 'caveat', size = 35),
+    )
+
+balloon.centerY = 240
+balloon.visible = False
+
+# We are making the firework:
+#0
+fireworkTrail = Line(40, 380, 40, 580,fill=gradient('red', 'yellow', 'black', start='top'))
+firework = Star(40, 150, 70, 12, fill=None,border=gradient('red', 'yellow', 'black'), roundness=10,dashes=True, visible=False)
+
+#1
+fireworkTrail1 = Line(120, 380, 120, 580,fill=gradient('red', 'yellow', 'black', start='top'))
+firework1 = Star(120, 150, 70, 12, fill=None,border=gradient('red', 'yellow', 'black'), roundness=10,dashes=True, visible=False)
+
+#2
+fireworkTrail2 = Line(200, 380, 200, 580,fill=gradient('red', 'yellow', 'black', start='top'))
+firework2 = Star(200, 150, 70, 12, fill=None,border=gradient('red', 'yellow', 'black'), roundness=10,dashes=True, visible=False)
+
+#3
+fireworkTrail3 = Line(280, 380, 280, 580,fill=gradient('red', 'yellow', 'black', start='top'))
+firework3 = Star(280, 150, 70, 12, fill=None,border=gradient('red', 'yellow', 'black'), roundness=10,dashes=True, visible=False)
+
+#4
+fireworkTrail4 = Line(360, 380, 360, 580,fill=gradient('red', 'yellow', 'black', start='top'))
+firework4 = Star(360, 150, 70, 12, fill=None,border=gradient('red', 'yellow', 'black'), roundness=10,dashes=True, visible=False)
+
+#We are making the pond 
+pond = Group (
+            Circle (360, 360, 100, fill=gradient ('cyan', 'deepSkyBlue', 'royalBlue', start='top')),
+            Circle (250, 360, 100, fill=gradient ('cyan', 'deepSkyBlue', 'royalBlue', start='top')),
+                )
+pond.centerX = 320                
+pond.centerY = 500
+pond.visible = False
+
+#We are making the splashes 
+splash = Polygon(100, 0, 310, 0, 260, 30, 245, 60, 240, 110, 235, 105, 220,
+                108, 200, 120, 175, 125, 160, 120, 150, 60, 130, 25,
+                fill=gradient('cyan', 'deepSkyBlue', 'royalBlue', start='top'),
+                visible=False)   
+splash.centerX = 325
+splash.centerY = 280
+
+#We are making the grass
+grass1 = Rect (200, 400,400, 20, fill='green', align = 'bottom')
+grass1.toBack()
+grass1.visible = False
+
+# We are making the sand, sun and water:
+sand = Polygon (400, 280, 160, 400, 400, 400, fill=gradient ('burlyWood', 'sienna', start = 'right'))
+sand1 = Polygon (0, 280, 400, 80, 400, 400, 0, 400, fill=gradient('burlyWood', 'sienna', start='right'))
+water = Rect (0, 320, 400, 80, fill=gradient('cyan', 'deepSkyBlue', 'royalBlue', start='top'))
+sun1 = Star (380, 10, 65, 400, fill=gradient ('orange', 'yellow', 'orangeRed'))
+sand.toFront()
+sand.visible = False
+sand1.visible = False
+water.visible = False
+sun1.visible = False
+
+#We are making the clouds
+cloud = Group(
+            Oval (0, 25, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (80, 40, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (100, 31, 40, 22, fill='white', border='gainsboro'),
+            Oval (120, 40, 40, 20, fill='white', border='gainsboro'),
+            Oval (200, 40, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (220, 20, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (320, 40, 60, 30, fill='white', border = 'gainsboro'),
+            )
+            
+cloud1 = Group(
+            Oval (200, 40,40, 20, fill='white', border='gainsboro'),
+            Oval (280, 31, 40, 20, fill='white', border ='gainsboro'),
+            Oval (360, 40, 40, 20, fill='white', border ='gainsboro'),
+            Oval (380, 10, 40, 20, fill='white', border ='gainsboro'),
+            Oval (120, 20, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (40, 40, 40, 30, fill='white', border = 'gainsboro'),
+            )
+cloud1.toBack()
+
+cloud2 = Group(
+            Oval (80, 200,40, 20, fill='white', border='gainsboro'),
+            Oval (160, 160, 40, 20, fill='white', border ='gainsboro'),
+            Oval (280, 40, 40, 20, fill='white', border ='gainsboro'),
+            Oval (160, 40, 40, 20, fill='white', border ='gainsboro'), 
+            )
+cloud2.visible = False
+ 
+cloud4 = Group(
+            Oval (200, 40,40, 20, fill='white', border='gainsboro'),
+            Oval (280, 31, 40, 20, fill='white', border ='gainsboro'),
+            Oval (360, 40, 40, 20, fill='white', border ='gainsboro'),
+            Oval (380, 10, 40, 20, fill='white', border ='gainsboro'),
+            Oval (120, 20, 40, 20, fill='white', border = 'gainsboro'),
+            Oval (40, 40, 40, 30, fill='white', border = 'gainsboro'),
+            )
+cloud4.visible = False
+
+#We are making the cover when the cart hits the water
+cover = Circle (0, 0, 10, fill=gradient ('cyan', 'deepSkyBlue', 'royalBlue', start='top'),opacity = 50)
+cover.visible = False
+
+cover1 = Circle (275,  0, 10, fill=gradient ('cyan', 'deepSkyBlue', 'royalBlue', start='top'),opacity = 50)
+cover1.visible = False
+
+cover2 = Circle (150, 340, 10, fill = gradient ('cyan', 'deepSkyBlue', 'royalBlue', start= 'top'), opacity = 50)
+cover2.visible = False
+
+#We are making the sun and the moon:
+sun =  Star(380, 10, 65, 400, fill=gradient('orange', 'yellow', 'orangeRed'))
+moon = Star(15, 350, 65, 400, fill= 'yellow',visible = False)
+sun.toBack()
+moon.toBack()
+
+#We are making the cart:
+cart = Circle (20, 70, 10, fill='red')
+cart1 = Circle(0,310,10,fill='red',visible = False)
+cart2 = Circle(0,310,10,fill ='red',visible = False)
+cart3 = Circle (400,50,10,fill='red',visible = False)
+cart4 = Circle (0, 30, 10, fill='red', visible = False)
+cart5 = Circle (0, 0, 10, fill='red', visible = False)
+cart6 = Circle (275, 0, 10, fill='red', visible = False)
+cart7 = Circle (150, 340, 10, fill='red', visible = False)
+cart8 = Circle (0, 270, 10, fill='red', visible = False)
+cart.toFront()
+cart1.toFront()
+cart2.toFront()
+cart3.toFront()
+cart4.toFront()
+cart5.toFront()
+cart6.toFront()
+cart7.toFront()
+cart8.toFront()
+
+#We are making the meteor go in front: 
+meteor.toFront()
+
+#We are making the star:
+Star = Group(
+            Star(50, 325, 2, 5, fill='white'),
+            Star(210, 375, 2, 5, fill='white'),
+            Star(380, 315, 2, 5, fill='white'),
+            Star(285, 290, 3, 5, fill='white'),
+            )
+
+Star.visible = False
+
+#We are making the light when the cart go into the black scene:
+light = Polygon(cart1.centerX,cart1.centerY,40,290,40,320,fill ='gold',visible = False)
+light.toFront()
+
+#We are making the fishes:
+fishes = Group( 
+        Oval(100, 200, 60, 40, fill=gradient('gold', 'yellow', start='left')),
+        Polygon(70, 200, 60, 180, 60, 220,
+                   fill=gradient('gold', 'yellow', start='left')),
+        Circle(115, 195, 2)     
+        )
+fishes.visible = False
+
+fishes2 = Group( 
+        Oval(100, 200, 60, 40, fill=gradient('pink', 'hotPink', start='left')),
+        Polygon(70, 200, 60, 180, 60, 220,
+                   fill=gradient('pink', 'hotPink', start='left')),
+        Circle(115, 195, 2)     
+        )
+fishes2.centerY = 320
+fishes2.visible = False
+
+fishes3 = Group( 
+        Oval(100, 200, 60, 40, fill=gradient('green', 'yellow', start='left')),
+        Polygon(70, 200, 60, 180, 60, 220,
+                   fill=gradient('green', 'yellow', start='left')),
+        Circle(115, 205, 2)     
+        )
+fishes3.centerX = 280
+fishes3.centerY = 260
+fishes3.rotateAngle = 180
+fishes3.visible = False
+
+fishes4 = Group( 
+        Oval(100, 200, 60, 40, fill=gradient('beige', 'lightGreen', start='left')),
+        Polygon(70, 200, 60, 180, 60, 220,
+                   fill=gradient('beige', 'lightGreen', start='left')),
+        Circle(115, 205, 2)     
+        )
+fishes4.centerX = 280
+fishes4.centerY = 380
+fishes4.rotateAngle = 180
+fishes4.visible = False
+
+fishes5 = Group( 
+        Oval(100, 200, 60, 40, fill=gradient('gold', 'yellow', start='left')),
+        Polygon(70, 200, 60, 180, 60, 220,
+                   fill=gradient('gold', 'yellow', start='left')),
+        Circle(115, 195, 2)     
+        )
+fishes5.visible = False
+fishes5.centerX = 0
+fishes5.centerY = 400
+
+#We are making the helper function to change the day and night:
+def changeDayandNight(sunY,suncolor):
+    sun.fill = suncolor
+    sun.centerY += sunY
+
+#We are changing the color of the land and the grass when the sun start to change:
+def changeLandandGrass(color1,color2):
+    land.fill = color1
+    grass.fill = color2
+
+#Making everything disappear when changing the new scene:
+def darkScene():
+    app.background = gradient('black','midnightBlue',start= 'top')
+    rail.visible = False
+    cloud.visible = False
+    cloud1.visible = False
+    app.dark = True
+    app.light = False
+    
+#Changing to the third scene:
+def thirdScene():
+    app.background = gradient('black','midnightBlue',start ='top')
+    
+#Moon,cloud and Star visible = True:
+    moon.visible = True
+    if(mountain2.fill == gradient('black','midnightBlue',start= 'top')):
+        Star.visible = True
+    
+#Changing the rail:
+    rail3.visible = True
+    rail2.visible = False
+    rail.visible = False
+
+#Changing the land and the grass:    
+    land.visible = False
+    grass.visible = False
+
+#Changing app:    
+    app.dark = False
+    app.light = False
+    app.moveMoon =True
+    
+#Add the new cart:    
+    cart2.visible = True
+    cart1.visible =False
+    cart3.visible = True
+
+#We are making the firework become invisble when the scene 3 is appear:    
+    firework.visible = False
+    firework1.visible = False
+    firework2.visible = False
+    firework3.visible = False
+    firework4.visible = False
+    fireworkTrail.visible = False
+    fireworkTrail1.visible = False
+    fireworkTrail2.visible = False
+    fireworkTrail3.visible = False
+    fireworkTrail4.visible = False
+
+#We are making the mountain visible:
+    mountain2.visible = True
+
+#We are making the fourth scene:
+def fourthScene():
+    app.background = gradient ('black', 'midnightBlue', start='top')
+    cart4.visible = True
+    cart3.visible = False
+    cart2.visible = False
+    sun.visible = False
+    cloud2.visible = False
+    rail3.visible = False
+    
+    if (cart4.centerX > 100):
+        meteor.visible = True
+    
+    rail4.visible = True
+    mountain2.visible = False
+    app.space = True
+    app.light = False
+    app.dark = False
+    app.moveMoon = False
+    Star.visible = False
+
+# We are making the fifth scene:
+def fifthScene():
+    app.background = gradient(rgb(165, 115, 180), rgb(235, 160, 130),rgb(225, 190, 165), start='top')
+    cart4.visible = False
+    cart5.visible = True
+    meteor.centerX = cart5.centerX + 5
+    meteor.centerY = cart5.centerY + 5
+    meteorTrail.x1 = meteor.centerX - 50
+    meteorTrail.y1 = meteor.centerY - 50
+    meteorTrail.x2 = meteor.centerX
+    meteorTrail.y2 = meteor.centerY
+    grass1.visible = True
+    pond.visible = True
+    pond.toFront()
+    cart5.toFront()
+    meteorTrail.toFront()
+    meteor.toFront()
+    app.ocean = True
+    
+#We are making the sixth scene:
+def sixthScene():
+    app.background = gradient('cyan', 'deepSkyBlue', 'royalBlue', start='top')
+    cart5.visible = False
+    cart6.visible = True
+    cover.visible = False
+    cover1.visible = True
+    pond.visible = False
+    grass1.visible = False
+    splash.visible = False
+    fishes.visible = True
+    fishes2.visible = True
+    fishes3.visible = True
+    fishes4.visible = True
+    app.underwater = True
+    
+#We are making the seventh scene
+def seventhScene():
+    app.background = gradient ('skyBlue', 'lightSkyBlue', 'pink','lightSalmon', start='bottom')
+    cart6.visible = False
+    if (fishes5.centerX > 149):
+        cart7.visible = True
+       
+    fishes.visible = False
+    fishes2.visible = False
+    fishes3.visible = False
+    fishes4.visible = False
+    fishes5.visible = True
+    app.sunrise = True
+    sun1.visible = True
+    sand.visible = True
+    
+    water.visible = True
+    sand.toFront()
+    cover1.visible = False
+    
+#We are making the eighth scene
+def eightScene():
+    app.background = gradient ('dodgerBlue', 'paleTurquoise', start = 'top')
+    sand1.visible = True
+    sun1.visible = False
+    water.visible = False
+    sand.visible = False
+    cart7.visible = False
+    cart8.visible = True
+    app.up = True
+    balloon.visible = True
+    balloon.toBack()
+
+#We use onKeyHold to make the cart moving:
+#Note: When the cart is moving, the sun and the cloud will change in each situations:
+def onKeyHold(keys):
+    if ('right' in keys):
+        right.visible = False
+        if(app.light == True):
+            if(cart.centerX < 50):
+                cart.centerX += 5
+        
+            elif(cart.centerX< 170):
+                cart.centerX += 3
+                cart.centerY += 6
+                changeDayandNight(5,'yellow')
+            
+            elif(cart.centerX >= 170):
+                cart.centerX += 5
+                cart.centerY += 0
+                app.background = gradient('skyBlue','lightPink',start='top')
+           
+#We are using Helper Function:
+            if(sun.centerY <=360):
+                changeDayandNight(4,'gold')
+            changeLandandGrass('saddleBrown','seaGreen')
+        
+        #Reverse the mountain:
+        mountain.centerX -= 10
+        mountain.centerY = 280
+        if(mountain.right < 0):
+            mountain.left = 400
+
+#Changing the scene when the cart.centerX > 400 :
+#The scene becomes to night time:
+        if(cart.left > 400):
+           darkScene() 
+           changeLandandGrass(gradient('brown', rgb(30, 15, 10), rgb(60, 20, 10), start='top'),'darkGreen')
+           cart.right = 0
+           rail2.visible = True
+           mountain.visible = True
+           mountain.toBack()
+          
+        if(app.dark == True):
+            cart.visible = False
+            cart1.visible = True
+            cart1.centerX += 5
+            light.visible = True
+            light.centerX += 5
+            if(sun.centerY >= 60):
+                changeDayandNight(-4,'white')
+        
+#Changing into the scene 3:
+        if(cart1.left > 400):
+            thirdScene()
+            mountain.visible = False
+            if(cart2.centerX < 80):
+                cart2.centerX += 5
+            
+            if(cart2.centerX >= 80):
+                cart2.centerX += 5
+                cart2.centerY -= 5
+            
+            if(cart2.centerX >= 360):
+                cart2.centerX += 5
+                cart2.centerY = 30
+            
+            if(cart3.centerX > 360):
+                cart3.centerX -= 5
+            
+            if(cart3.centerX <= 360):
+                cart3.centerX -= 5
+                cart3.centerY += 5
+            
+            if(cart3.centerX <= 80):
+                cart3.centerX -= 5
+                cart3.centerY = 330
+            
+            if(cart2.centerX >= cart3.centerX):
+                app.background = gradient(rgb(165, 115, 180), rgb(235, 160, 130),rgb(225, 190, 165), start='top')
+                mountain2.fill = gradient('black','midnightBlue',start= 'top')
+                sun.fill = 'gold'
+                moon.fill ='white'
+                cloud2.visible = True
+                cart2.toFront()
+                cart3.toFront()
+                
+# Changing into the scene 4: 
+            if (cart2.centerX > 400):
+                fourthScene()
+                cart4.centerX += 5
+                meteor.centerX += 5
+    
+                if (cart4.centerX >= 40):
+                    cart4.centerY += 5
+                    moon.centerY -= 5
+                    meteor.centerY = cart4.centerY
+    
+                    if (meteor.visible == True):
+                        meteorTrail.x1 = meteor.centerX - 50
+                        meteorTrail.y1 = meteor.centerY - 50
+                        meteorTrail.x2 = meteor.centerX
+                        meteorTrail.y2 = meteor.centerY
+                        meteorTrail.visible = True
+                        rail4.centerY -= 1
+                        
+# Changing into scene five:
+                if (cart4.centerX > 400):
+                    fifthScene()
+                    cloud4.visible = True
+                    cloud4.toBack()
+                    cart5.centerX += 5 
+                    cart5.centerY += 5
+                    if (pond.containsShape(cart5)):
+                        meteor.visible = False
+                        meteorTrail.visible = False
+                        cart5.fill = 'red'
+                        splash.visible = True
+                        cart5.centerX -= 3
+                        cart5.centerY -= 3
+                        cover.visible = True
+                        cover.centerX = cart5.centerX 
+                        cover.centerY = cart5.centerY 
+                        cover.toFront()
+                        
+# Changing into scene six:
+                if (cart5.centerX > 400):
+                    sixthScene()
+                    cover1.toFront()
+                    cover1.centerY += 5
+                    cart6.centerY += 5
+                    fishes.centerX += 5
+                    fishes.centerY -= 2
+                    if (fishes.hitsShape (cart6)):
+                        cart6.opacity = 0
+                        cover1.opacity = 0 
+                        
+#Changing into scene seven 
+                if (fishes.left > 400):
+                    seventhScene()
+                    fishes5.centerX += 2
+                    
+                    if (fishes5.top >= 320):
+                        fishes5.centerX += 2
+                        fishes5.centerY =340
+                        cart7.toFront()
+                        fishes5.toFront()
+                     
+                    if (fishes5.centerX > 200):
+                        fishes5.visible = False
+                
+                if (cart7.visible == True):
+                    cover2.visible = True
+                    cover2.toFront()
+                    if (cart7.centerX < 270):
+                        cart7.centerX += 1
+                        cover2.centerX += 1
+                    elif (cart7.centerX < 410):
+                        cover2.opacity = 0
+                        cart7.centerX += 6
+                        cart7.centerY -= 3
+                        
+#Changing into the eight scene:
+                if (cart7.centerX > 400):
+                    eightScene()
+                    cart8.centerX += 4
+                    cart8.centerY -= 2
+
+#Change the position of all of the firework:
+firework.toBack()
+firework1.toBack()
+firework2.toBack()
+firework3.toBack()
+firework4.toBack()
+fireworkTrail.toBack()
+fireworkTrail1.toBack()
+fireworkTrail2.toBack()
+fireworkTrail3.toBack()
+fireworkTrail4.toBack()
+        
+#We are making the motion of the canvas:
+def onStep():
+    
+#We are moving the sun, the moon,  and the cloud to make it realistic:
+    sun.points +=1
+    moon.points +=1
+    cloud.centerX -= 4
+    if (cloud.right < 0):
+        cloud.left = 400
+    
+    cloud1.centerX -= 1
+    if (cloud1.right < 0):
+        cloud1.left = 400
+        
+#We are exploding the firework and make it disappear by decreasing the opacity:
+    if(app.dark == True):
+        if(cart1.centerX >= 40):
+            fireworkTrail.top -= 10
+            
+            if(firework.visible == True):
+                if(firework.opacity != 0):
+                    firework.opacity -= 1
+            
+        if(cart1.centerX >= 120):
+            fireworkTrail1.top -= 10
+            
+            if(firework1.visible == True):
+                if(firework1.opacity != 0):
+                    firework1.opacity -= 1
+            
+        if(cart1.centerX >= 200):
+            fireworkTrail2.top -= 10
+            
+            if(firework2.visible == True):
+                if(firework2.opacity != 0):
+                    firework2.opacity -= 1
+            
+        if(cart1.centerX >= 280):    
+            fireworkTrail3.top -= 10
+            
+            if(firework.visible == True):
+                if(firework3.opacity != 0):
+                    firework3.opacity -= 1
+            
+        if(cart1.centerX >= 360):
+            fireworkTrail4.top -= 10
+            
+            if(firework.visible == True):
+                if(firework4.opacity != 0):
+                    firework4.opacity -= 1
+        
+    if(fireworkTrail.top == 150):
+        firework.visible = True
+        fireworkTrail.visible = False
+    
+    if(fireworkTrail1.top == 150):
+        firework1.visible = True
+        fireworkTrail1.visible = False
+        
+    if(fireworkTrail2.top == 150):
+        firework2.visible = True
+        fireworkTrail2.visible = False
+    
+    if(fireworkTrail3.top == 150):
+        firework3.visible = True
+        fireworkTrail3.visible = False
+    
+    if(fireworkTrail4.top == 150):
+        firework4.visible = True
+        fireworkTrail4.visible = False
+    
+#The third scene:
+    if(app.moveMoon == True):
+        if(sun.centerX != 40):
+            sun.centerX -= 5
+            moon.centerX += 5
+        
+        Star.right +=1
+        if(Star.left > 400):
+            Star.right = 400
+        
+        cloud2.right -= 1
+        if(cloud2.right < 0):
+            cloud2.left = 0
+        
+# The fourth scene:
+    meteor.points+=2
+    
+# The fifth scene:
+    if(app.ocean == True):
+        cloud4.centerY -= 1 
+    
+    if (cloud4.visible == True):
+        if (grass1.top!=280):
+            
+            pond.centerY -= 2 
+    
+        if (grass1.top!=280):
+            grass1.height+=2
+            grass1.top-=2
+    
+        if (pond.containsShape(cart5)):
+            if (splash.opacity != 0):
+                splash.opacity -= 1
+                
+# The sixth scene
+    if (app.underwater == True):
+        fishes2.centerX += 6
+        fishes3.centerX -= 4
+        fishes4.centerX -= 5 
+    if (fishes2.left > 400):
+        fishes2.right = 0
+        
+    if (fishes3.right < 0):
+        fishes3.left = 400
+        
+    if (fishes4.right < 0):
+        fishes4.left = 400
+        
+# The seventh scene
+    if (app.sunrise == True):
+        sun1.points += 1
+        sun1.centerX += 3
+    if (sun1.left > 400):
+        sun1.right = 0
+        
+#The Eighth scene:
+    if (app.up == True):
+        balloon.centerY -= 5
+        if (balloon.bottom < 0):
+            balloon.top = 400
+pass 
